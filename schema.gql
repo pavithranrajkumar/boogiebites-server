@@ -1,0 +1,79 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type UserEntity {
+  """User ID"""
+  id: String!
+
+  """User's First Name"""
+  firstName: String!
+
+  """User's Last Name"""
+  lastName: String
+
+  """User's Role"""
+  role: role!
+
+  """User's Gender"""
+  gender: gender!
+
+  """User's Mobile"""
+  mobile: Float!
+
+  """User's state ( Whether active or inactive) """
+  active: Boolean!
+  deletedAt: DateTime!
+  updatedAt: DateTime!
+}
+
+enum role {
+  admin
+  server
+  chef
+  restaurantManager
+  fieldWorker
+  billingOfficer
+  otherEmployee
+}
+
+enum gender {
+  male
+  female
+  other
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  users: [UserEntity!]!
+  user(id: String!): UserEntity!
+}
+
+type Mutation {
+  createUser(addUserInput: AddUserInput!): UserEntity!
+  updateUser(updateUserInput: UpdateUserInput!): UserEntity!
+  removeUser(id: String!): Boolean!
+}
+
+input AddUserInput {
+  firstName: String!
+  lastName: String
+  role: String!
+  gender: String!
+  mobile: Float!
+  active: Boolean = true
+}
+
+input UpdateUserInput {
+  firstName: String
+  lastName: String
+  role: String
+  gender: String
+  mobile: Float
+  active: Boolean = true
+  id: String!
+}
