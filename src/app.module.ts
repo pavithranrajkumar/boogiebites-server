@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as dotenv from 'dotenv';
+import { RestaurantModule } from './restaurant/restaurant.module';
 import { UserModule } from './user/user.module';
 dotenv.config();
 
@@ -25,8 +26,10 @@ dotenv.config();
         },
       },
       logging: true,
+  
     }),
     UserModule,
+    RestaurantModule,
   ],
   controllers: [],
   providers: [],

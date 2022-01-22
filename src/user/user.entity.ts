@@ -1,10 +1,10 @@
 import { Field, ObjectType, registerEnumType } from '@nestjs/graphql';
 import { GENDER, USER_ROLES } from 'src/constants';
+import { Restaurant } from 'src/restaurant/restaurant.entity';
 import {
   Column,
   DeleteDateColumn,
-  Entity,
-  PrimaryGeneratedColumn,
+  Entity, OneToOne, PrimaryGeneratedColumn,
   UpdateDateColumn
 } from 'typeorm';
 
@@ -17,7 +17,7 @@ registerEnumType(GENDER, {
 
 @Entity('users')
 @ObjectType()
-export class UserEntity {
+export class User {
   @PrimaryGeneratedColumn('uuid')
   @Field(() => String, { description: 'User ID' })
   id: string;
@@ -63,4 +63,8 @@ export class UserEntity {
   @Field()
   @UpdateDateColumn()
   updatedAt: Date;
+
+  //ASSOCIATIONS
+  @OneToOne(() => Restaurant, restaurant => restaurant.manager)
+  restaurant:Restaurant;
 }

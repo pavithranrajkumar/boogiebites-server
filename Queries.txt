@@ -1,0 +1,67 @@
+# mutation {
+#   createUser(
+#     addUserInput: {
+#       firstName: "Sow"
+#       role: "restaurantManager"
+#       gender: "male"
+#       mobile: 8883866377
+#     }
+#   ) {
+#     id
+#     firstName
+#     lastName
+#   }
+# }
+
+# query{
+#   users{
+#     id,firstName,role,mobile,active
+#   }
+# }
+
+# query {
+#   user(id: "cfef7e82-3bd4-48c2-bcd3-4cd7d1bdc227") {
+#     id
+#     firstName
+#     role
+#     mobile
+#     active
+#   }
+# }
+
+# mutation {
+#   updateUser(
+#     updateUserInput: {
+#       id: "03bcd29a-05ef-4f1e-81af-ba27d32eeb27"
+#       role: "admin"
+#     }
+#   ){
+#     id
+#   }
+# }
+
+# mutation{
+#   removeUser(id:"018b409b-239d-4bde-8cba-a8a3fb847300")
+# }
+
+# mutation {
+#   createRestaurant(
+#     createRestaurantInput: {
+#       name: "Bites-003"
+#       managerId: "d9ee413b-8704-4d18-9dc9-069ecefac71f"
+#       location: "pollachi"
+#     }
+#   ) {
+#     id
+#   }
+# }
+
+# query {
+#   restaurant(id:"5fb327d5-deff-4750-bad6-1ae51d8f7bd1") {
+#     id
+#     manager{
+#       id
+#       firstName
+#     }
+#   }
+# }

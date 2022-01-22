@@ -2,7 +2,7 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type UserEntity {
+type User {
   """User ID"""
   id: String!
 
@@ -48,15 +48,38 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+type Restaurant {
+  """Restaurant ID"""
+  id: String!
+
+  """Restaurant Name"""
+  name: String!
+
+  """Restaurant Location"""
+  location: String!
+
+  """Restaurant's status ( Whether active or inactive) """
+  active: Boolean!
+  deletedAt: DateTime!
+  updatedAt: DateTime!
+  manager: User!
+  managerId: String!
+}
+
 type Query {
-  users: [UserEntity!]!
-  user(id: String!): UserEntity!
+  users: [User!]!
+  user(id: String!): User!
+  restaurants: [Restaurant!]!
+  restaurant(id: String!): Restaurant!
 }
 
 type Mutation {
-  createUser(addUserInput: AddUserInput!): UserEntity!
-  updateUser(updateUserInput: UpdateUserInput!): UserEntity!
+  createUser(addUserInput: AddUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
   removeUser(id: String!): Boolean!
+  createRestaurant(createRestaurantInput: CreateRestaurantInput!): Restaurant!
+  updateRestaurant(updateRestaurantInput: UpdateRestaurantInput!): Restaurant!
+  removeRestaurant(id: String!): Restaurant!
 }
 
 input AddUserInput {
@@ -75,5 +98,34 @@ input UpdateUserInput {
   gender: String
   mobile: Float
   active: Boolean = true
+  id: String!
+}
+
+input CreateRestaurantInput {
+  """Restaurant Name"""
+  name: String!
+
+  """Restaurant Location"""
+  location: String!
+
+  """Restaurant's status ( Whether active or inactive) """
+  active: Boolean = true
+
+  """Restaurant Manager ID"""
+  managerId: String!
+}
+
+input UpdateRestaurantInput {
+  """Restaurant Name"""
+  name: String
+
+  """Restaurant Location"""
+  location: String
+
+  """Restaurant's status ( Whether active or inactive) """
+  active: Boolean = true
+
+  """Restaurant Manager ID"""
+  managerId: String
   id: String!
 }
