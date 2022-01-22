@@ -25,6 +25,7 @@ type User {
   active: Boolean!
   deletedAt: DateTime!
   updatedAt: DateTime!
+  restaurant: Restaurant
 }
 
 enum role {
@@ -62,7 +63,7 @@ type Restaurant {
   active: Boolean!
   deletedAt: DateTime!
   updatedAt: DateTime!
-  manager: User!
+  manager: User
   managerId: String!
 }
 

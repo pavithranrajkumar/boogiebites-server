@@ -18,7 +18,7 @@ export class UserService {
   }
 
   async findOne(userId: string): Promise<User> {
-    const user = await this.userRepository.findOne(userId);
+    const user = await this.userRepository.findOne(userId,{relations:['restaurant']});
     if (!user) {
       throw new NotFoundException(`User #${userId} not found`);
     }
@@ -26,7 +26,7 @@ export class UserService {
   }
 
   async findAll(): Promise<Array<User>> {
-    return await this.userRepository.find();
+    return await this.userRepository.find({relations:['restaurant']});
   }
 
   async update(id: string, updateUserInput: UpdateUserInput) {

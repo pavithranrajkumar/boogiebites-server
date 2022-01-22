@@ -33,7 +33,7 @@ export class Restaurant {
   updatedAt: Date;
 
   //ASSOCIATIONS
-  @Field(()=>User)
+  @Field(()=>User,{nullable:true})
   @OneToOne(()=>User,user=>user.restaurant)
   @JoinColumn()
   manager:User

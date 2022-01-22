@@ -65,6 +65,7 @@ export class User {
   updatedAt: Date;
 
   //ASSOCIATIONS
+  @Field(()=>Restaurant,{nullable:true})
   @OneToOne(() => Restaurant, restaurant => restaurant.manager)
   restaurant:Restaurant;
 }
